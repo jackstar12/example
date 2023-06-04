@@ -3,10 +3,17 @@ name = "example"
 description = "Example Extension"
 version="0.1.0"
 authors=["github_username"]
-packages = [
-    {include = '../'}
-]
+# packages = [ {include = '../'} ]
 
 [tool.poetry.dependencies]
 # You can include your python-dependencies here
+python = ">=3.9,<4.0 "
 python-utils = "^3.5.2"
+fastapi = "0.83.0"
+httpx = "0.23.0"
+pydantic = "1.10.4"
+python-dotenv = "0.21.0"
+uvicorn = { version = "0.18.3", extras = ["standard"] }
+uvloop = "0.16.0"
+lnbits = "^0.10.0"
+# lnbits = { path = "../../../", develop = true }

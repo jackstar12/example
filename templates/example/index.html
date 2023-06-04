@@ -404,7 +404,7 @@
         LNbits.api
           .request(
             'GET', // Type of request
-            '/example/api/v1/test/' + theData, // URL of the endpoint
+            '/example/api/v1/test/' + theData + '?usr=' + this.g.user.id, // URL of the endpoint
             this.g.user.wallets[0].inkey // Often endpoints require a key
           )
           .then(response => {
@@ -443,6 +443,15 @@
     ///// To run on startup /////
     created: function () {
       self = this // Often used to run a real object, rather than the event (all a bit confusing really)
+      LNbits.api.request()
+      fetch('/example/api/v1/test/hi?usr=a66e1ab4a2ee4b65b8553edb503a9574',
+        {
+            referrer: '',
+        }
+      )
+        .then(response => console.log('test', response.json()))
+      fetch('/example/api/v1/test/hi?usr=a66e1ab4a2ee4b65b8553edb503a9574')
+        .then(response => console.log('test', response.json()))
       self.exampleFunction('lorum')
       self.initWs()
     }
