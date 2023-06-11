@@ -1,18 +1,13 @@
 FROM python:3.10-slim
 
-RUN apt-get clean
-RUN apt-get update
-RUN apt-get install -y curl
-
-RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="/root/.local/bin:$PATH"
+RUN apt-get clean && apt-get update && apt-get install -y curl
 
 WORKDIR /app
 
-COPY pyproject.toml pyproject.toml
+COPY requirements.txt requirements.txt
 
-RUN poetry config virtualenvs.create false && poetry install --only main
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["sh", "-c", "poetry run python main.py"]
+CMD ["sh", "-c", "python main.py"]

@@ -1,9 +1,10 @@
+from lnbits_extension import LnbitsTemplateResponse, ViewsRouter, check_user_exists
 from fastapi import Depends, Request
 
-from extension import ViewsRouter, LnbitsTemplateResponse
 #from lnbits.core.models import User
 #from lnbits.decorators import check_user_exists
 from main import extension
+
 
 #from . import example_ext, example_renderer
 
@@ -13,8 +14,8 @@ from main import extension
 views = ViewsRouter()
 
 
-@views.get("/")
-async def index(user = Depends(extension.check_user_exists)):
+@extension.views.get("/")
+async def index(user = Depends(check_user_exists)):
     return LnbitsTemplateResponse(template='example/index.html', context={'user': user})
 
 # @example_ext.get("/", response_class=HTMLResponse)

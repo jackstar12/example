@@ -9,11 +9,8 @@ authors=["github_username"]
 # You can include your python-dependencies here
 python = ">=3.9,<4.0 "
 python-utils = "^3.5.2"
-fastapi = "0.83.0"
-httpx = "0.23.0"
-pydantic = "1.10.4"
-python-dotenv = "0.21.0"
-uvicorn = { version = "0.18.3", extras = ["standard"] }
-uvloop = "0.16.0"
-lnbits = "^0.10.0"
-# lnbits = { path = "../../../", develop = true }
+# lnbits-extension = "^0.10.0"
+lnbits-extension = { path = "../../../packages/extension", develop = true }
+lnbits-lib = { path = "../../../packages/lib", develop = true }
+
+
